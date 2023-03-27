@@ -1,4 +1,5 @@
 import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 import { useOrderDetails } from '../../contexts/OrderDetails';
 
 export default function ToppingOption({name, imagePath}){
@@ -15,13 +16,9 @@ export default function ToppingOption({name, imagePath}){
             src={`http://localhost:3030/${imagePath}`}
             alt={`${name} topping`}
             />
-            <input
-            type="checkbox"
-            id={name}
-            defaultChecked={false}
-            onChange={checkHandler}
-            />
-            <label htmlFor={name}>{name}</label>
+            <Form.Group controlId={`${name}-topping-checkbox`}>
+                <Form.Check type='checkbox' onChange={checkHandler} label={name}/>
+            </Form.Group>
         </Col>
     )
 }

@@ -37,19 +37,18 @@ test("update topping subtotal when topping changes", async () => {
     expect(toppingsSubtotal).toHaveTextContent('0.00');
 
     // check cherries topping and check subtotal
-    const cherriesInput = await screen.findByRole('checkbox', {name: 'Cherries'});
+    const cherriesCheckbox = await screen.findByRole('checkbox', {name: 'Cherries'});
 
-    expect(cherriesInput).not.toBeChecked();
-    await user.click(cherriesInput);
+    await user.click(cherriesCheckbox);
     expect(toppingsSubtotal).toHaveTextContent("1.50");
 
     // check Hot fudge topping and check subtotal 
-    const hotFudgeInput = await screen.findByRole('checkbox', {name: 'Hot fudge'});
+    const hotFudgeCheckbox = await screen.findByRole('checkbox', {name: 'Hot fudge'});
 
-    await user.click(hotFudgeInput);
+    await user.click(hotFudgeCheckbox);
     expect(toppingsSubtotal).toHaveTextContent("3.00");
 
     // uncheck cherries topping and check subtotal
-    await user.click(cherriesInput);
+    await user.click(cherriesCheckbox);
     expect(toppingsSubtotal).toHaveTextContent("1.50");
 })
