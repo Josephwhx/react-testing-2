@@ -7,7 +7,7 @@ export const handler = [
                 {name: 'Chocolate', imagePath: '/images/chocolate.png'},
                 {name: 'Vanilla', imagePath: '/images/vanilla.png'},
             ])
-        )
+        );
     }),
 
     rest.get('http://localhost:3030/toppings', (req, res, ctx) => {
@@ -17,6 +17,6 @@ export const handler = [
                 {name: 'M&Ms', imagePath: '/images/m-and-ms.png'},
                 {name: 'Hot fudge', imagePath: '/images/hot-fudge.png'}
             ])
-        )
+        );
     })
 ]
