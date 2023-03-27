@@ -4,8 +4,8 @@ import SummaryForm from "../SummaryForm";
 test('checkbox is unchecked by default, and checking it enables button', () => {
     render(<SummaryForm/>);
 
-    const checkbox = screen.getByRole('checkbox', {name: 'checkbox'});
-    const button = screen.getByRole('button', {name: 'button'})
+    const checkbox = screen.getByRole('checkbox', {name: /I agree to Terms and Conditions/i});
+    const button = screen.getByRole('button', {name: /Confirm order/i})
 
     // expect checkbox to be unchecked by default
     expect(checkbox).not.toBeChecked();
@@ -18,4 +18,9 @@ test('checkbox is unchecked by default, and checking it enables button', () => {
     expect(checkbox).toBeChecked();
     // expect button to be enabled
     expect(button).toBeEnabled();
+
+    // click checkbox again
+    fireEvent.click(checkbox);
+    // expect button to be disabled
+    expect(button).toBeDisabled();
 });
