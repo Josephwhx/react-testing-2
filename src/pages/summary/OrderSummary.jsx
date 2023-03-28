@@ -16,6 +16,11 @@ export default function OrderSummary({setOrderPhase}) {
 
     const toppingArray = Object.keys(optionCounts.toppings) // ["M&Ms", "Gummi bears"]
     const toppingList = toppingArray.map(key => <li key={key}>{key}</li>)
+
+    const toppingsContent = (totals.toppings !== 0 ? <><h2>Toppings: {formatCurrency(totals.toppings)}</h2>
+    <ul>
+        {toppingList}
+    </ul> </>: <></>)
     
     return (
         <div>
@@ -24,10 +29,7 @@ export default function OrderSummary({setOrderPhase}) {
             <ul>
                 {scoopList}
             </ul>
-            <h2>Toppings: {formatCurrency(totals.toppings)}</h2>
-            <ul>
-                {toppingList}
-            </ul>
+           {toppingsContent}
             <SummaryForm setOrderPhase={setOrderPhase}/>
         </div>
     )

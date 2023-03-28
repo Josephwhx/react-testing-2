@@ -42,8 +42,15 @@ test('order phases for happy path', async () => {
     await user.click(confirmOrderButton);
 
     // expect "loading" to show
-    // const loading = screen.getByText(/loading/i);
-    // expect(loading).toBeInTheDocument();
+    const loading = screen.getByText(/loading/i);
+    expect(loading).toBeInTheDocument();
+
+    const thankYouHeader = await screen.findByText(/Thank you/i);
+    expect(thankYouHeader).toBeInTheDocument();
+
+    const isLoading = screen.queryByText(/loading/i);
+    expect(isLoading).not.toBeInTheDocument();
+
 
     // click "new order" button on confirmation page
     const newOrderButton = await screen.findByRole('button', {name: /create new order/i});
