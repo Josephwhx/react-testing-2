@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Popover, OverlayTrigger } from 'react-bootstrap';
 
-function SummaryForm() {
+function SummaryForm({setOrderPhase}) {
 
     const [toCheck, setToCheck] = useState(false);
     
@@ -13,6 +13,7 @@ function SummaryForm() {
 
     const handleSubmit = (event) => {
       event.preventDefault();
+      setOrderPhase("completed");
     }
 
     const popover = (
@@ -43,7 +44,7 @@ function SummaryForm() {
           />
 
         </Form.Group>
-        <Button variant="primary" type="submit" disabled={!toCheck}>
+        <Button variant="primary" type="submit" disabled={!toCheck} onClick={handleSubmit}>
           Confirm order
         </Button>
       </Form>
